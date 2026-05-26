@@ -1,47 +1,40 @@
-## Upload This Project To GitHub
+## Push The New Roshwealth Website Repo To GitHub
 
-This environment cannot create the `.git` folder, so finish these steps in your own Terminal on your Mac.
+This folder is already a fresh local Git repository.
 
-### 1. Open Terminal and move into the project
+Project folder:
 
-```bash
-cd "/Users/rohanshirke/Documents/website roshwealth"
-```
+`/Users/rohanshirke/Desktop/rosh`
 
-### 2. Create a Git repository
+## 1. Create an empty GitHub repository
 
-```bash
-git init -b main
-git config user.name "Rohan Shirke"
-git config user.email "roshwealth@gmail.com"
-```
+Suggested repository name:
 
-### 3. Save the project
+`roshwealth-website`
 
-```bash
-git add .
-git commit -m "Initial Roshwealth website"
-```
+Keep it empty.
 
-### 4. Create an empty GitHub repository
+Do not add:
 
-Create a new repository on GitHub, for example:
+- README
+- `.gitignore`
+- license
 
-- Repository name: `roshwealth-website`
-- Keep it empty
-- Do not add README, `.gitignore`, or license there
+## 2. Connect the local repo to GitHub
 
-### 5. Connect and push
-
-Replace `YOUR-USERNAME` with your GitHub username:
+Run:
 
 ```bash
-git remote add origin https://github.com/YOUR-USERNAME/roshwealth-website.git
+cd "/Users/rohanshirke/Desktop/rosh"
+git remote add origin https://github.com/roshwealth/roshwealth-website.git
 git push -u origin main
 ```
 
-### Notes
+## 3. Deploy to Cloudflare Pages
 
-- The project already includes an updated `.gitignore`.
-- `node_modules`, build folders, logs, and local env files are excluded.
-- If GitHub asks for authentication, sign in with your GitHub account or use a Personal Access Token.
+When connecting this repository in Cloudflare Pages, remember:
+
+- this is a website, not an app
+- use `Framework preset: None`
+- do not use Wrangler
+- do not use Workers Build

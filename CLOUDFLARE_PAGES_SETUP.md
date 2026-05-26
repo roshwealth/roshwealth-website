@@ -1,17 +1,32 @@
-Cloudflare Pages should publish the approved static site in `preview-site/`.
+## Cloudflare Pages Setup For Roshwealth Website
 
-Use these project settings:
+This repository is a static website.
+
+Do not configure it as:
+
+- Next.js
+- Workers Build
+- Wrangler deploy
+- an app framework
+
+Use Cloudflare Pages with these exact settings:
 
 - Framework preset: `None`
-- Build command: `pnpm run build:preview-site`
-- Build output directory: `dist`
+- Build command: leave blank
+- Build output directory: leave blank
 - Root directory: leave blank
 
-Custom domains should be added inside the Cloudflare Pages project, not by manually wiring cross-account DNS first.
+Cloudflare should publish the repository root directly, where:
 
-Recommended DNS after the custom domains are claimed in Pages:
+- `index.html` is the homepage
+- `styles.css` contains the shared styling
+- `assets/` contains images
 
-- `CNAME` `@` -> `roshwealth-website.pages.dev`
-- `CNAME` `www` -> `roshwealth-website.pages.dev`
+## Custom Domains
 
-Both can be switched to `Proxied` after Cloudflare Pages shows the custom domains as active.
+After deployment succeeds, add these custom domains inside the Pages project:
+
+- `roshwealth.com`
+- `www.roshwealth.com`
+
+Let Cloudflare manage the DNS automatically if prompted.
