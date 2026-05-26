@@ -1,6 +1,3 @@
-import Link from "next/link";
-
-import { footerLinks } from "@/lib/content";
 import { siteConfig } from "@/lib/site";
 
 import { Container } from "./ui";
