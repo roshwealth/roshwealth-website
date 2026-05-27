@@ -619,6 +619,14 @@ h3 { font-size: 28px; }
   display: grid;
   gap: 8px;
 }
+.form-submit-frame {
+  width: 0;
+  height: 0;
+  border: 0;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
 .consultation-modal {
   position: fixed;
   inset: 0;
@@ -697,12 +705,18 @@ h3 { font-size: 28px; }
   cursor: pointer;
   transition: border-color .22s ease, background .22s ease, transform .22s ease, box-shadow .22s ease;
 }
+.upload-dropzone--static {
+  cursor: default;
+}
 .upload-dropzone:hover,
 .upload-dropzone.is-dragover {
   border-color: rgba(215,181,109,0.78);
   background: linear-gradient(180deg, rgba(255,255,255,1), rgba(249,243,229,0.96));
   box-shadow: 0 14px 32px rgba(82, 64, 36, 0.09);
   transform: translateY(-1px);
+}
+.upload-dropzone--static:hover {
+  transform: none;
 }
 .upload-dropzone__input {
   position: absolute;
@@ -724,6 +738,10 @@ h3 { font-size: 28px; }
 .upload-dropzone__meta {
   color: #8a6d33;
   font-weight: 600;
+}
+.upload-dropzone__note {
+  margin: -2px 0 0;
+  color: #7a6f61;
 }
 .article { max-width: 860px; }
 .form-grid { display: grid; gap: 14px; }

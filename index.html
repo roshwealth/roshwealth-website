@@ -160,12 +160,22 @@
           <div class="eyebrow">Book Free Consultation</div>
           <h3 id="consultation-title" style="margin-top:16px">Share your details.</h3>
           <p class="copy" style="margin-top:12px">We will review your information and get back to you with a thoughtful consultation call.</p>
-          <form class="consultation-form" id="consultation-form">
+          <form
+            class="consultation-form"
+            id="consultation-form"
+            action="https://formsubmit.co/roshwealth@gmail.com"
+            method="POST"
+            enctype="multipart/form-data"
+          >
             <input class="field" type="text" name="name" placeholder="Name" required />
             <input class="field" type="tel" name="contact" placeholder="Contact number" required />
             <input class="field" type="text" name="bestTime" placeholder="Best time to call" required />
             <input class="field" type="text" name="dayTime" placeholder="Day &amp; Time (optional)" />
             <input class="field" type="email" name="email" placeholder="Email ID" required />
+            <input type="hidden" name="_subject" value="Book Free Consultation Request" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://roshwealth.com/?consultation=sent#contact" />
             <p class="small consultation-form__status" id="consultation-status" hidden></p>
             <button class="btn btn-primary" type="submit">Done</button>
           </form>
@@ -185,34 +195,40 @@
         <button class="consultation-modal__close" type="button" aria-label="Close portfolio review form" data-close-portfolio-review>×</button>
         <div class="consultation-modal__view portfolio-review__view--form">
           <div class="eyebrow">Free Portfolio Review</div>
-          <h3 id="portfolio-review-title" style="margin-top:16px">Upload your portfolio.</h3>
-          <p class="copy" style="margin-top:12px">Share your basic details and portfolio file for a thoughtful review conversation.</p>
-          <form class="consultation-form" id="portfolio-review-form">
+          <h3 id="portfolio-review-title" style="margin-top:16px">Share your review request.</h3>
+          <p class="copy" style="margin-top:12px">Send your details first. We will then guide you to share the portfolio file in the most reliable way.</p>
+          <form
+            class="consultation-form"
+            id="portfolio-review-form"
+            action="https://formsubmit.co/roshwealth@gmail.com"
+            method="POST"
+            enctype="multipart/form-data"
+          >
             <input class="field" type="text" name="name" placeholder="Name" required />
             <input class="field" type="tel" name="contact" placeholder="Contact Number" required />
             <input class="field" type="email" name="email" placeholder="Email ID" required />
-            <label class="upload-dropzone" for="portfolio-review-file">
-              <input
-                class="upload-dropzone__input"
-                id="portfolio-review-file"
-                name="attachment"
-                type="file"
-                accept=".png,.pdf,.xls,.xlsx,.csv,.gsheet,.jpg,.jpeg,.doc,.docx"
-                required
-              />
-              <span class="upload-dropzone__title">Drag and drop your portfolio here</span>
-              <span class="upload-dropzone__copy">PNG, PDF, Excel, Google Sheets export, JPG, or Word</span>
-              <span class="upload-dropzone__meta" id="portfolio-review-file-name">No file selected yet.</span>
-            </label>
+            <input type="hidden" name="_subject" value="Free Portfolio Review Request" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://roshwealth.com/?portfolio-review=sent#services" />
+            <div class="upload-dropzone upload-dropzone--static" aria-hidden="true">
+              <span class="upload-dropzone__title">Portfolio file sharing</span>
+              <span class="upload-dropzone__copy">After sending your details, use the buttons below in the thank-you step to share your file by email or WhatsApp.</span>
+              <span class="upload-dropzone__meta">Best with PDF, JPG, PNG, Excel, or Word under 10 MB.</span>
+            </div>
             <p class="small consultation-form__status" id="portfolio-review-status" hidden></p>
             <button class="btn btn-primary" type="submit">Done</button>
           </form>
         </div>
         <div class="consultation-modal__view portfolio-review__view--thankyou" hidden>
           <div class="eyebrow">Thank You</div>
-          <h3 style="margin-top:16px">Thank you for sharing your portfolio details.</h3>
-          <p class="copy" style="margin-top:12px">Your review request is ready to send to Roshwealth. We will connect with you soon.</p>
-          <button class="btn btn-secondary" type="button" data-close-portfolio-review>Close</button>
+          <h3 style="margin-top:16px">Thank you for sharing your details.</h3>
+          <p class="copy" style="margin-top:12px">Please send your portfolio file now using email or WhatsApp so the Roshwealth team can review it properly.</p>
+          <div class="cta-row" style="margin-top:18px">
+            <a class="btn btn-primary" href="mailto:roshwealth@gmail.com?subject=Portfolio%20File%20for%20Review&body=Hello%20Roshwealth%2C%0A%0APlease%20find%20my%20portfolio%20file%20attached%20for%20review.%0A">Email Portfolio File</a>
+            <a class="btn btn-secondary" href="https://api.whatsapp.com/send?phone=919987541848&text=Hello%20Roshwealth%2C%20I%20have%20submitted%20my%20details%20for%20a%20portfolio%20review.%20I%20would%20like%20to%20share%20my%20portfolio%20file." target="_blank" rel="noreferrer">Share on WhatsApp</a>
+          </div>
+          <button class="btn btn-secondary" type="button" data-close-portfolio-review style="margin-top:16px">Close</button>
         </div>
       </div>
     </div>
@@ -251,18 +267,29 @@
         const consultationFormView = consultationModal?.querySelector('.consultation-modal__view--form');
         const consultationThankYouView = consultationModal?.querySelector('.consultation-modal__view--thankyou');
         const consultationStatus = document.querySelector('#consultation-status');
-        const consultationEmail = 'roshwealth@gmail.com';
         const portfolioReviewModal = document.querySelector('#portfolio-review-popup');
         const portfolioReviewForm = document.querySelector('#portfolio-review-form');
         const portfolioReviewOpeners = document.querySelectorAll('.js-open-portfolio-review');
         const portfolioReviewClosers = document.querySelectorAll('[data-close-portfolio-review]');
         const portfolioReviewFormView = portfolioReviewModal?.querySelector('.portfolio-review__view--form');
         const portfolioReviewThankYouView = portfolioReviewModal?.querySelector('.portfolio-review__view--thankyou');
-        const portfolioReviewFileInput = document.querySelector('#portfolio-review-file');
-        const portfolioReviewFileName = document.querySelector('#portfolio-review-file-name');
         const portfolioReviewStatus = document.querySelector('#portfolio-review-status');
-        const portfolioReviewEmail = 'roshwealth@gmail.com';
-        const formSubmitEndpoint = 'https://formsubmit.co/ajax/';
+
+        const showConsultationThankYou = () => {
+          if (!consultationModal || !consultationFormView || !consultationThankYouView) return;
+          consultationFormView.hidden = true;
+          consultationThankYouView.hidden = false;
+          consultationModal.classList.add('is-open');
+          consultationModal.setAttribute('aria-hidden', 'false');
+        };
+
+        const showPortfolioReviewThankYou = () => {
+          if (!portfolioReviewModal || !portfolioReviewFormView || !portfolioReviewThankYouView) return;
+          portfolioReviewFormView.hidden = true;
+          portfolioReviewThankYouView.hidden = false;
+          portfolioReviewModal.classList.add('is-open');
+          portfolioReviewModal.setAttribute('aria-hidden', 'false');
+        };
 
         const closeConsultationModal = () => {
           if (!consultationModal) return;
@@ -337,15 +364,8 @@
           }
         });
 
-        consultationForm?.addEventListener('submit', async (event) => {
-          event.preventDefault();
+        consultationForm?.addEventListener('submit', () => {
           const submitButton = consultationForm.querySelector('button[type="submit"]');
-          const formData = new FormData(consultationForm);
-          formData.append('_subject', 'Book Free Consultation Request');
-          formData.append('_template', 'table');
-          formData.append('_captcha', 'false');
-          formData.append('_replyto', String(formData.get('email') || '').trim());
-
           if (consultationStatus) {
             consultationStatus.hidden = true;
             consultationStatus.textContent = '';
@@ -355,79 +375,10 @@
             submitButton.disabled = true;
             submitButton.textContent = 'Sending...';
           }
-
-          try {
-            const response = await fetch(`${formSubmitEndpoint}${consultationEmail}`, {
-              method: 'POST',
-              body: formData,
-              headers: { Accept: 'application/json' }
-            });
-
-            if (!response.ok) throw new Error('Unable to send consultation request.');
-
-            if (consultationFormView && consultationThankYouView) {
-              consultationFormView.hidden = true;
-              consultationThankYouView.hidden = false;
-            }
-            consultationForm.reset();
-          } catch (error) {
-            if (consultationStatus) {
-              consultationStatus.hidden = false;
-              consultationStatus.textContent = 'We could not send your request just now. Please try again in a moment.';
-            }
-          } finally {
-            if (submitButton) {
-              submitButton.disabled = false;
-              submitButton.textContent = 'Done';
-            }
-          }
         });
 
-        const updatePortfolioReviewFileName = (file) => {
-          if (!portfolioReviewFileName) return;
-          portfolioReviewFileName.textContent = file ? `${file.name}` : 'No file selected yet.';
-        };
-
-        portfolioReviewFileInput?.addEventListener('change', () => {
-          updatePortfolioReviewFileName(portfolioReviewFileInput.files?.[0]);
-        });
-
-        const dropzone = portfolioReviewModal?.querySelector('.upload-dropzone');
-
-        if (dropzone && portfolioReviewFileInput) {
-          ['dragenter', 'dragover'].forEach((eventName) => {
-            dropzone.addEventListener(eventName, (event) => {
-              event.preventDefault();
-              dropzone.classList.add('is-dragover');
-            });
-          });
-
-          ['dragleave', 'dragend', 'drop'].forEach((eventName) => {
-            dropzone.addEventListener(eventName, (event) => {
-              event.preventDefault();
-              dropzone.classList.remove('is-dragover');
-            });
-          });
-
-          dropzone.addEventListener('drop', (event) => {
-            const file = event.dataTransfer?.files?.[0];
-            if (!file) return;
-            const dataTransfer = new DataTransfer();
-            dataTransfer.items.add(file);
-            portfolioReviewFileInput.files = dataTransfer.files;
-            updatePortfolioReviewFileName(file);
-          });
-        }
-
-        portfolioReviewForm?.addEventListener('submit', async (event) => {
-          event.preventDefault();
+        portfolioReviewForm?.addEventListener('submit', () => {
           const submitButton = portfolioReviewForm.querySelector('button[type="submit"]');
-          const formData = new FormData(portfolioReviewForm);
-          formData.append('_subject', 'Free Portfolio Review Request');
-          formData.append('_template', 'table');
-          formData.append('_captcha', 'false');
-          formData.append('_replyto', String(formData.get('email') || '').trim());
-
           if (portfolioReviewStatus) {
             portfolioReviewStatus.hidden = true;
             portfolioReviewStatus.textContent = '';
@@ -436,34 +387,6 @@
           if (submitButton) {
             submitButton.disabled = true;
             submitButton.textContent = 'Sending...';
-          }
-
-          try {
-            const response = await fetch(`${formSubmitEndpoint}${portfolioReviewEmail}`, {
-              method: 'POST',
-              body: formData,
-              headers: { Accept: 'application/json' }
-            });
-
-            if (!response.ok) throw new Error('Unable to send portfolio review request.');
-
-            if (portfolioReviewFormView && portfolioReviewThankYouView) {
-              portfolioReviewFormView.hidden = true;
-              portfolioReviewThankYouView.hidden = false;
-            }
-
-            portfolioReviewForm.reset();
-            updatePortfolioReviewFileName(null);
-          } catch (error) {
-            if (portfolioReviewStatus) {
-              portfolioReviewStatus.hidden = false;
-              portfolioReviewStatus.textContent = 'We could not send your portfolio review request just now. Please try again in a moment.';
-            }
-          } finally {
-            if (submitButton) {
-              submitButton.disabled = false;
-              submitButton.textContent = 'Done';
-            }
           }
         });
 
@@ -512,6 +435,23 @@
 
         slider.addEventListener('mouseenter', () => clearInterval(intervalId));
         slider.addEventListener('mouseleave', start);
+
+        const query = new URLSearchParams(window.location.search);
+
+        if (query.get('consultation') === 'sent') {
+          showConsultationThankYou();
+          query.delete('consultation');
+        }
+
+        if (query.get('portfolio-review') === 'sent') {
+          showPortfolioReviewThankYou();
+          query.delete('portfolio-review');
+        }
+
+        if (window.location.search.includes('consultation=sent') || window.location.search.includes('portfolio-review=sent')) {
+          const cleanedUrl = `${window.location.pathname}${query.toString() ? `?${query.toString()}` : ''}${window.location.hash}`;
+          window.history.replaceState({}, document.title, cleanedUrl);
+        }
 
         start();
       })();
