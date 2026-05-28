@@ -196,16 +196,17 @@
         <div class="consultation-modal__view portfolio-review__view--form">
           <div class="eyebrow">Free Portfolio Review</div>
           <h3 id="portfolio-review-title" style="margin-top:16px">Share your details and portfolio.</h3>
-          <p class="copy" style="margin-top:12px">Use the secure upload form below to send your details and portfolio file directly for review.</p>
-          <div class="jotform-embed">
-            <iframe
-              src="https://form.jotform.com/261474787887076"
-              title="Roshwealth Free Portfolio Review Form"
-              loading="lazy"
-              allow="geolocation; microphone; camera; fullscreen"
-            ></iframe>
+          <p class="copy" style="margin-top:12px">To make file uploads more reliable, the portfolio review form opens as a secure full-page form.</p>
+          <div class="upload-dropzone upload-dropzone--static" aria-hidden="true" style="margin-top:18px">
+            <span class="upload-dropzone__title">Accepted file formats</span>
+            <span class="upload-dropzone__copy">PDF, JPG, PNG, Excel, and Word files are supported through the secure upload form.</span>
+            <span class="upload-dropzone__meta">Best with files under 10 MB.</span>
           </div>
-          <p class="small jotform-embed__note">If the form takes a moment to load, please wait a few seconds. Large files may still take longer to finish uploading.</p>
+          <div class="cta-row" style="margin-top:18px">
+            <a class="btn btn-primary" href="https://form.jotform.com/261474787887076">Open Secure Upload Form</a>
+            <button class="btn btn-secondary" type="button" data-close-portfolio-review>Close</button>
+          </div>
+          <p class="small jotform-embed__note">After submitting there, Jotform will handle the file upload directly and more reliably than the embedded version.</p>
         </div>
       </div>
     </div>
