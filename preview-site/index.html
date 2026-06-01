@@ -72,15 +72,15 @@
             <h2 style="margin-top:18px">Structured financial guidance for every important wealth decision.</h2>
           </div>
           <div class="cards-3">
-            <div class="card service-card" tabindex="0" aria-expanded="false"><h3>Wealth Management</h3><p class="copy service-card__copy">- Across equity, mutual funds, and fixed income.<br />- Protecting families, businesses, and long-term capital.<br />- Disciplined allocation across market cycles.</p></div>
-            <div class="card service-card" tabindex="0" aria-expanded="false"><h3>Mutual Fund Distribution</h3><p class="copy service-card__copy">- Cost-efficient fund selection.<br />- Lower overlap across categories.<br />- Diversified, disciplined long-term portfolios.</p></div>
-            <div class="card service-card" tabindex="0" aria-expanded="false"><h3>Financial Planning</h3><p class="copy service-card__copy">- Personal and corporate planning.<br />- Goals, cash flow, tax, protection.<br />- Interactive finance dashboards.</p></div>
-            <div class="card service-card" tabindex="0" aria-expanded="false"><h3>Goal-Based Investing</h3><p class="copy service-card__copy">- Investing around real life goals.<br />- Matching horizon, risk, and allocation.<br />- Tracking progress against milestones.</p></div>
-            <div class="card service-card" tabindex="0" aria-expanded="false"><h3>Retirement Planning</h3><p class="copy service-card__copy">- Inflation-aware retirement planning.<br />- Retirement corpus and income strategy.<br />- SWP planning for regular withdrawals.</p></div>
-            <div class="card service-card" tabindex="0" aria-expanded="false"><h3>Portfolio Review</h3><p class="copy service-card__copy">- Review gaps, overlap, concentration.<br />- Goal and risk alignment analysis.<br />- AI-assisted portfolio insights.</p></div>
-            <div class="card service-card" tabindex="0" aria-expanded="false"><h3>Corporate Investment Planning</h3><p class="copy service-card__copy">- Treasury and surplus planning.<br />- Founder and MSME capital deployment.<br />- Disciplined business cash management.</p></div>
-            <div class="card service-card" tabindex="0" aria-expanded="false"><h3>Real Estate and Housing Loan Consulting</h3><p class="copy service-card__copy">- Property buying decision support.<br />- EMI, affordability, ownership cost.<br />- Smarter housing loan structuring.</p></div>
-            <div class="card service-card" tabindex="0" aria-expanded="false"><h3>Child Education Fund Planning</h3><p class="copy service-card__copy">- Planning for rising education costs.<br />- Long-term education corpus building.<br />- Balance future and current needs.</p></div>
+            <div class="card service-card"><h3>Wealth Management</h3><p class="copy service-card__copy">- Across equity, mutual funds, and fixed income.<br />- Protecting families, businesses, and long-term capital.<br />- Disciplined allocation across market cycles.</p></div>
+            <div class="card service-card"><h3>Mutual Fund Distribution</h3><p class="copy service-card__copy">- Cost-efficient fund selection.<br />- Lower overlap across categories.<br />- Diversified, disciplined long-term portfolios.</p></div>
+            <div class="card service-card"><h3>Financial Planning</h3><p class="copy service-card__copy">- Personal and corporate planning.<br />- Goals, cash flow, tax, protection.<br />- Interactive finance dashboards.</p></div>
+            <div class="card service-card"><h3>Goal-Based Investing</h3><p class="copy service-card__copy">- Investing around real life goals.<br />- Matching horizon, risk, and allocation.<br />- Tracking progress against milestones.</p></div>
+            <div class="card service-card"><h3>Retirement Planning</h3><p class="copy service-card__copy">- Inflation-aware retirement planning.<br />- Retirement corpus and income strategy.<br />- SWP planning for regular withdrawals.</p></div>
+            <div class="card service-card"><h3>Portfolio Review</h3><p class="copy service-card__copy">- Review gaps, overlap, concentration.<br />- Goal and risk alignment analysis.<br />- AI-assisted portfolio insights.</p></div>
+            <div class="card service-card"><h3>Corporate Investment Planning</h3><p class="copy service-card__copy">- Treasury and surplus planning.<br />- Founder and MSME capital deployment.<br />- Disciplined business cash management.</p></div>
+            <div class="card service-card"><h3>Real Estate and Housing Loan Consulting</h3><p class="copy service-card__copy">- Property buying decision support.<br />- EMI, affordability, ownership cost.<br />- Smarter housing loan structuring.</p></div>
+            <div class="card service-card"><h3>Child Education Fund Planning</h3><p class="copy service-card__copy">- Planning for rising education costs.<br />- Long-term education corpus building.<br />- Balance future and current needs.</p></div>
           </div>
         </div>
       </section>
@@ -343,42 +343,6 @@
 
           statCards.forEach((card) => {
             card.addEventListener('click', () => setActiveCard(card));
-          });
-        }
-
-        const serviceCards = Array.from(document.querySelectorAll('.service-card'));
-        if (serviceCards.length) {
-          const setServiceCardState = (card, isOpen) => {
-            card.classList.toggle('is-open', isOpen);
-            card.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-          };
-
-          const collapseOtherServiceCards = (activeCard) => {
-            serviceCards.forEach((card) => {
-              if (card !== activeCard) setServiceCardState(card, false);
-            });
-          };
-
-          serviceCards.forEach((card) => {
-            card.addEventListener('click', () => {
-              const nextState = !card.classList.contains('is-open');
-              collapseOtherServiceCards(card);
-              setServiceCardState(card, nextState);
-            });
-
-            card.addEventListener('keydown', (event) => {
-              if (event.key !== 'Enter' && event.key !== ' ') return;
-              event.preventDefault();
-              const nextState = !card.classList.contains('is-open');
-              collapseOtherServiceCards(card);
-              setServiceCardState(card, nextState);
-            });
-          });
-
-          document.addEventListener('click', (event) => {
-            const clickedCard = event.target.closest('.service-card');
-            if (clickedCard) return;
-            serviceCards.forEach((card) => setServiceCardState(card, false));
           });
         }
 

@@ -237,14 +237,14 @@ h3 { font-size: 28px; }
 }
 .service-card {
   min-height: 224px;
-  cursor: pointer;
+  cursor: default;
   padding-bottom: 26px;
 }
 .service-card h3 {
   margin: 0;
   position: relative;
   z-index: 2;
-  transition: color .24s ease, transform .24s ease;
+  transition: color .24s ease;
 }
 .service-card__copy {
   position: static;
@@ -255,22 +255,12 @@ h3 { font-size: 28px; }
   transition: none;
 }
 .service-card:hover h3,
-.service-card:focus-visible h3,
-.service-card.is-open h3 {
+.service-card:focus-visible h3 {
   color: #17120f;
-  transform: translateY(-1px);
 }
 .service-card:focus-visible {
   outline: 2px solid rgba(215,181,109,0.6);
   outline-offset: 2px;
-}
-.service-card.is-open::after,
-.service-card[aria-expanded="true"]::after {
-  visibility: visible;
-  opacity: 1;
-  transform: scaleX(1);
-  box-shadow: 0 0 18px rgba(243, 207, 125, 0.5);
-  transition-delay: 0s;
 }
 .cards-3 {
   align-items: start;
